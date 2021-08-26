@@ -1,14 +1,20 @@
-const element = document.getElementById("modal_main");
-element.className = element.className + " modal_active";
-
-let elementClose = document.querySelector("div.modal__close");
-elementClose.onclick = function() {
-  element.className = "modal modal__close";
-};
-
-const elementSuccess = document.getElementById("modal_success");
-const elementForSuccess = document.querySelector("a.show-success"); 
-elementForSuccess.onclick = function() {
-  element.className = "modal modal__close";
-  elementSuccess.className = "modal modal_active";
-};
+const getMenuPoint = document.querySelectorAll("a.menu__link"); 
+let arr = Array.from(getMenuPoint);
+const length = arr.length;
+for (let i = 0; i<length; i++)
+{
+	arr[i].onclick = function ()
+	{
+		let activeMenu = document.querySelector("ul.menu_active");
+			if (activeMenu != null) {
+				activeMenu.classList.remove("menu_active");
+			}
+			if (arr[i].nextElementSibling != null) {
+	    	arr[i].nextElementSibling.classList.add("menu_active");
+	    	return false;
+	    }
+	    if (arr[i].parentElement.parentElement.className === "menu menu_sub") {
+	    	return false;
+	    }
+	  };
+}
