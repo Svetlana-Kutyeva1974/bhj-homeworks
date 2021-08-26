@@ -14,7 +14,7 @@ activeArrowPrev.onclick = function ()
 	if (activeSlider.previousElementSibling != null )
 		{activeSlider.previousElementSibling.classList.add("slider__item_active");}
 	else
-		{activeSlider.nextElementSibling.classList.add("slider__item_active");}
+		{activeSlider.parentElement.lastElementChild.classList.add("slider__item_active");}
 
 
 }
@@ -27,7 +27,7 @@ activeArrowNext.onclick = function ()
 	if (activeSlider.nextElementSibling != null )
 		{activeSlider.nextElementSibling.classList.add("slider__item_active");}
 	else
-		{activeSlider.previousElementSibling.classList.add("slider__item_active");}
+		{activeSlider.parentElement.firstElementChild.classList.add("slider__item_active");}
 }
 
 // points
