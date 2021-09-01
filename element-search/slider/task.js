@@ -24,7 +24,7 @@ activeArrowPrev.onclick = function ()
 	let count = isActive();
 	if (count === 0) 
 	{
-		count = arrDots.length-1;
+		count = arr.length-1;
 	}
 	else {
 		count = count - 1;
@@ -35,7 +35,7 @@ activeArrowPrev.onclick = function ()
 activeArrowNext.onclick = function ()
 {
 	let count = isActive();
-	if (count <= (arrDots.length - 2)) 
+	if (count <= (arr.length - 2)) 
 	{
 		count = count + 1;
 	}
