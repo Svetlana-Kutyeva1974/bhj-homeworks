@@ -1,84 +1,112 @@
-let activeArrowPrev = document.querySelector("div.slider__arrow_prev");
-let activeArrowNext = document.querySelector("div.slider__arrow_next");
-const getAllSlider = document.querySelectorAll("div.slider__item"); 
-console.log(getAllSlider);
-let arr = Array.from(getAllSlider);
-console.log(arr);
+const activeArrowPrev = document.querySelector("div.slider__arrow_prev");
+const activeArrowNext = document.querySelector("div.slider__arrow_next");
+const arr = Array.from(document.querySelectorAll("div.slider__item"));
+const arrDots = Array.from(document.querySelectorAll("div.slider__dot"));
 
-const getAllDots= document.querySelectorAll("div.slider__dot"); 
-let arrDots = Array.from(getAllDots);
-console.log(arrDots);
-let length = arrDots.length;
+let count = 0;
+arrDots[count].classList.add("slider__dot_active");
 
-function ActiveIndex () {
-let ActiveIndex = arr.findIndex(() => document.querySelector("div.slider__item_active"));
-console.log(ActiveIndex);
-return ActiveIndex;
-}
+function RemoveAddSl(count) {
+	arr.forEach((item, i) => {
+        if (item.classList.contains("slider__item_active")) {
+            arrDots[i].classList.remove("slider__dot_active");
+            item.classList.remove("slider__item_active");
+            return;
+        }
+    });
 
-function RemoveSl() {
-console.log(this);
-console.log(ActiveIndex());
-let activeSlider = document.querySelector("div.slider__item_active");
-console.log(activeSlider);
-	if (activeSlider !== null) {
-		activeSlider.classList.remove("slider__item_active");
-	}
-}
-
-
-function ActivePrSl() {
-//const modalParent = this.closest(".slider__items");
-let activeSlider = document.querySelector("div.slider__item_active");
-	if (activeSlider.previousElementSibling !== null )
-		{activeSlider.previousElementSibling.classList.add("slider__item_active");}
-	else
-		{activeSlider.parentElement.lastElementChild.classList.add("slider__item_active");}
-
-}
-
-function ActiveNextSl() {
-	//const modalParent = this.closest(".slider__items");
-	let activeSlider = document.querySelector("div.slider__item_active");
-if (activeSlider.nextElementSibling !== null )
-		{activeSlider.nextElementSibling.classList.add("slider__item_active");}
-	else
-		{activeSlider.parentElement.firstElementChild.classList.add("slider__item_active");}
+arr[count].classList.add("slider__item_active");
+arrDots[count].classList.add("slider__dot_active");
 
 }
 
 activeArrowPrev.onclick = function ()
 {
-	//RemoveSl.call(activeArrowPrev);
-	RemoveSl();
-    //ActivePrSl.call(activeArrowPrev);
-    ActivePrSl.call(activeArrowPrev.closest(".slider__navigation"));
-    //ActivePrSl();
-
+	if (count >= 1 && count <= 4) {
+		count -=1;
+		RemoveAddSl.call(activeArrowPrev,count);
+	};
+	if (count === 0) {
+		count = 4;
+		RemoveAddSl.call(activeArrowPrev,count);
+	};
 }
+
 activeArrowNext.onclick = function ()
 {
-
-  RemoveSl();
-  //RemoveSl.call(activeArrowPrev);
-  ActiveNextSl.call(activeArrowNext.closest(".slider__navigation"));
-  //ActiveNextSl();
+ 
+  if (count >= 0 && count <= 3) {
+		count += 1;
+		RemoveAddSl.call(activeArrowNext,count);
+	};
+ if (count === 4) {
+		count = 0;
+		RemoveAddSl.call(activeArrowNext, count);
+	};
 }
 
 // points
 
-for (let i = 0; i<length; i++)
+for (let i = 0; i<arrDots.length; i++)
 {
 	arrDots[i].onclick = function ()
 	{
+        RemoveAddSl(i);
 		arrDots[i].classList.add("slider__dot_active");
+        
+		/*count = getActiveIndex();
+		arrDots[count].classList.remove("slider__dot_active");*/
+
 		let activeSlider = document.querySelector("div.slider__item_active");
 		console.log(activeSlider);
 		if (activeSlider != null) {
 			activeSlider.classList.remove("slider__item_active");
 		}
+
 		arr[i].classList.add("slider__item_active");
-		console.log(arr[i]);
 
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /*countCurrent = arr.findIndex((item, i, array) => {
+	if (item.classList.contains("slider__item_active")) {
+    console.log(i);
+     return i;
+}
+});
+		arr[countCurrent].classList.remove("slider__item_active");
+  
+  */
+
+
+
+
+
+/*function getActiveIndex() {
+let ActiveIndex = arr.findIndex((item, i, array) => {
+	if (array[i].classList.contains("div.slider__item.slider__item_active")) {
+return i;
+}
+});
+return ActiveIndex;
+}
+*/
