@@ -11,7 +11,7 @@ for (let menuClick of arrMenu)
 			console.log(activeMenus.length);
 			if (linkClick.nextElementSibling.classList.contains("menu_active")) {
 				  linkClick.nextElementSibling.classList.remove("menu_active");
-				  return;
+				  return false;
 			} 
 			if (linkClick.nextElementSibling != null && !(linkClick.nextElementSibling.classList.contains("menu_active"))) {
 				if (activeMenu != null) {
