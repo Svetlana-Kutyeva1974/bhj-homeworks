@@ -3,68 +3,53 @@ const activeArrowNext = document.querySelector("div.slider__arrow_next");
 const arr = Array.from(document.querySelectorAll("div.slider__item"));
 const arrDots = Array.from(document.querySelectorAll("div.slider__dot"));
 
-let count = 0;
-arrDots[count].classList.add("slider__dot_active");
-
-function RemoveAddSl(count) {
-	arr.forEach((item, i) => {
-        if (item.classList.contains("slider__item_active")) {
-            arrDots[i].classList.remove("slider__dot_active");
-            item.classList.remove("slider__item_active");
-            return;
-        }
-    });
-
-arr[count].classList.add("slider__item_active");
-arrDots[count].classList.add("slider__dot_active");
-
+function isActive () {
+	return (arr.findIndex((item, i, array) => {
+		return (item.classList.contains("slider__item_active")); 
+	}));
 }
+
+function toggleSlider(i) {
+	arrDots[isActive()].classList.remove("slider__dot_active");
+	arr[isActive()].classList.remove("slider__item_active");
+
+	arr[i].classList.add("slider__item_active");
+	arrDots[i].classList.add("slider__dot_active");
+}
+
+arrDots[isActive()].classList.add("slider__dot_active");
 
 activeArrowPrev.onclick = function ()
 {
-	if (count >= 1 && count <= 4) {
-		count -=1;
-		RemoveAddSl.call(activeArrowPrev,count);
-	};
-	if (count === 0) {
-		count = 4;
-		RemoveAddSl.call(activeArrowPrev,count);
-	};
+	let count = isActive();
+	if (count === 0) 
+	{
+		count = arrDots.length-1;
+	}
+	else {
+		count = count - 1;
+	} 
+	toggleSlider(count);
 }
 
 activeArrowNext.onclick = function ()
 {
- 
-  if (count >= 0 && count <= 3) {
-		count += 1;
-		RemoveAddSl.call(activeArrowNext,count);
-	};
- if (count === 4) {
+	let count = isActive();
+	if (count <= (arrDots.length - 2)) 
+	{
+		count = count + 1;
+	}
+	else {
 		count = 0;
-		RemoveAddSl.call(activeArrowNext, count);
-	};
+	}
+	toggleSlider(count);
 }
-
-// points
 
 for (let i = 0; i<arrDots.length; i++)
 {
-	arrDots[i].onclick = function ()
+	arrDots[i].onclick = function () 
 	{
-        RemoveAddSl(i);
-		arrDots[i].classList.add("slider__dot_active");
-        
-		/*count = getActiveIndex();
-		arrDots[count].classList.remove("slider__dot_active");*/
-
-		let activeSlider = document.querySelector("div.slider__item_active");
-		console.log(activeSlider);
-		if (activeSlider != null) {
-			activeSlider.classList.remove("slider__item_active");
-		}
-
-		arr[i].classList.add("slider__item_active");
-
+		toggleSlider(i);
 	}
 }
 
@@ -87,26 +72,44 @@ for (let i = 0; i<arrDots.length; i++)
 
 
 
- /*countCurrent = arr.findIndex((item, i, array) => {
-	if (item.classList.contains("slider__item_active")) {
-    console.log(i);
-     return i;
+
+
+//---------------------------мусор---------------------------------
+
+/*function isActive(element, index, array) {
+return (element.classList.contains("slider__item_active"));
+}*/
+//console.log(arr.findIndex(isActive));
+
+
+/*console.log(arr.findIndex((item, i, array) => {
+	return (item.classList.contains("slider__item_active") === true); 
+})
+);
+*/
+		//arr[countCurrent].classList.remove("slider__item_active");
+
+/*function isActive(element, index, array) {
+return (element.classList.contains("slider__item_active"));
 }
-});
-		arr[countCurrent].classList.remove("slider__item_active");
-  
-  */
+console.log(arr.findIndex(isActive));
+*/
 
 
 
 
+//arrDots[i].classList.add("slider__dot_active");
 
-/*function getActiveIndex() {
-let ActiveIndex = arr.findIndex((item, i, array) => {
-	if (array[i].classList.contains("div.slider__item.slider__item_active")) {
-return i;
-}
-});
-return ActiveIndex;
-}
+
+		//count = getActiveIndex();
+		//arrDots[count].classList.remove("slider__dot_active");
+
+		/*let activeSlider = document.querySelector("div.slider__item_active");
+		console.log(activeSlider);
+		if (activeSlider != null) {
+			activeSlider.classList.remove("slider__item_active");
+		}
+
+		arr[i].classList.add("slider__item_active");
+
 */
