@@ -4,9 +4,7 @@ let isInViewport = function(element) {
   const viewportHeight = window.innerHeight;
   const elementTop = element.getBoundingClientRect().top;
   const elementBottom = element.getBoundingClientRect().bottom;
-  //return (elementTop > 0 && elementTop < viewportHeight) ? true : false;
   return (elementTop > 0 && elementTop < viewportHeight) || (elementBottom.bottom < viewportHeight && elementBottom.bottom > 0) ? true : false;
-
 };
 
 const onScrollToggle = function() {
