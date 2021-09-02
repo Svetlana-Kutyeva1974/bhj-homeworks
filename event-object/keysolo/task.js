@@ -4,6 +4,8 @@ class Game {
     this.wordElement = container.querySelector('.word');
     this.winsElement = container.querySelector('.status__wins');
     this.lossElement = container.querySelector('.status__loss');
+    //this.elseInput = container.querySelector('.status__simbol');
+    //this.speedInput = container.querySelector('.status__time');
 
     this.reset();
 
@@ -14,16 +16,16 @@ class Game {
     this.setNewWord();
     this.winsElement.textContent = 0;
     this.lossElement.textContent = 0;
+    //this.speedInput.textContent = this.wordElement.textContent.length;
+    //this.elseInput.textContent = this.wordElement.textContent.length;
   }
 
   registerEvents() {
-    /*
-      TODO:
-      Написать обработчик события, который откликается
-      на каждый введённый символ.
-      В случае правильного ввода слова вызываем this.success()
-      При неправильном вводе символа - this.fail();
-     */
+    const onKey = (e) => {
+    (e.key === this.currentSymbol.innerHTML) ? this.success() : this.fail();
+    }
+
+    document.addEventListener('keydown', onKey);
   }
 
   success() {
@@ -87,4 +89,60 @@ class Game {
 }
 
 new Game(document.getElementById('game'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-----------------------------мусор------------------
+/*
+
+/*downGame() {
+let timer; 
+let x =  this.wordElement.textContent.length; 
+
+function countdown(){  
+  this.speedInput.innerHTML = x;//не работает
+  //let x = this.wordElement.textContent.length;
+console.log(x);
+  x--; 
+  //this.speedInput.textContent--;
+  if (x<0){
+    clearTimeout(timer);
+    alert('Стоп таймер, время истекло!');
+    this.reset();
+    return;
+  }
+  else {
+    timer = setTimeout(countdown, 1000);
+  }
+}
+countdown(); // вызов функции
+
+}
+
+*/
+
+
+
+//this.downGame(); // вызов функции
 
