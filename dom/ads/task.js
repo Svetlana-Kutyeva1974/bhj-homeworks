@@ -1,47 +1,41 @@
 let arrLinks = Array.from(document.getElementsByClassName("card"));
-let id;
-let time = 1000;
 
 for (let linkClick of arrLinks)
 {
-console.log("linkClick----" + linkClick);
-const arrRotator = Array.from(linkClick.querySelectorAll("span.rotator__case"));
+  let id;
+  let time = 1000;
+  let arrRotator = Array.from(linkClick.querySelectorAll("span.rotator__case"));
 
+  function isActive () {
+    return (arrRotator.findIndex((item) => (item.classList.contains("rotator__case_active"))));
+  }
 
-function isActive () {
-  return (arrRotator.findIndex((item) => (item.classList.contains("rotator__case_active"))));
-}
+  function toggleBanner(i) {
+    arrRotator[isActive()].classList.remove("rotator__case_active");
+    arrRotator[i].classList.add("rotator__case_active");
+    arrRotator[i].style.color = arrRotator[i].dataset.color;
+    time = +arrRotator[i].dataset.speed;
+    onClickClear();
+    onClick(time);
+  }
 
-function toggleBanner(i) {
-  arrRotator[isActive()].classList.remove("rotator__case_active");
-  arrRotator[i].classList.add("rotator__case_active");
-  arrRotator[i].style.color = arrRotator[i].dataset.color;
-  onClickClear();
-  time = +arrRotator[i].dataset.speed;
-  onClick(time);
-}
+  function toggleRotator() {
+    let i= isActive();
+     console.log("индекс" + i);
+        (i === (arrRotator.length - 1)) ? i = 0 : i+= 1;
+          toggleBanner(i)
+          return ;
+  }
 
-function toggleRotator() {
-  let i= isActive();
-   console.log("индекс" + i);
-      (i === (arrRotator.length - 1)) ? i = 0 : i+= 1;
-        console.log("индекс новый" + i);
-        toggleBanner(i)
-        console.log(arrRotator[i].classList);
-        console.log(arrRotator);
-        return ;
-}
+  function onClick(time) {
+    id = setInterval (() => toggleRotator(), 1000);
+  }
 
-function onClick(time) {// один раз проходит. теперь эту процедуру поставить на интервал
-  id = setInterval (() => toggleRotator(), time);
-}
+  function onClickClear() {
+    clearInterval(id);
+  }
 
-function onClickClear() {
-  clearInterval(id);
-}
-
-linkClick.addEventListener('click', onClick);
-//linkClick.addEventListener('click', onClickClear);
+  linkClick.addEventListener('click', onClick);
 }
 
 
