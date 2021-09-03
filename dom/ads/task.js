@@ -1,12 +1,12 @@
 let arrLinks = Array.from(document.getElementsByClassName("card"));
 let id;
+let time = 1000;
+
 for (let linkClick of arrLinks)
 {
 console.log("linkClick----" + linkClick);
 const arrRotator = Array.from(linkClick.querySelectorAll("span.rotator__case"));
-console.log("массив" + arrRotator[0] + arrRotator[1]);
-//let timerId = setInterval(function() {
-//let timerId = setInterval(() => onClick(), 2000);
+
 
 function isActive () {
   return (arrRotator.findIndex((item) => (item.classList.contains("rotator__case_active"))));
@@ -15,6 +15,10 @@ function isActive () {
 function toggleBanner(i) {
   arrRotator[isActive()].classList.remove("rotator__case_active");
   arrRotator[i].classList.add("rotator__case_active");
+  arrRotator[i].style.color = arrRotator[i].dataset.color;
+  onClickClear();
+  time = +arrRotator[i].dataset.speed;
+  onClick(time);
 }
 
 function toggleRotator() {
@@ -28,9 +32,8 @@ function toggleRotator() {
         return ;
 }
 
-function onClick() {// один раз проходит. теперь эту процедуру поставить на интервал
-  //toggleRotator();
-  id = setInterval (() => toggleRotator(), 1000);
+function onClick(time) {// один раз проходит. теперь эту процедуру поставить на интервал
+  id = setInterval (() => toggleRotator(), time);
 }
 
 function onClickClear() {
@@ -40,6 +43,11 @@ function onClickClear() {
 linkClick.addEventListener('click', onClick);
 //linkClick.addEventListener('click', onClickClear);
 }
+
+
+
+
+
 
 
 
