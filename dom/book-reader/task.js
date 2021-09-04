@@ -1,5 +1,6 @@
 let arrLinksOfSize = Array.from(document.getElementsByClassName("font-size"));
-
+let arrBookLinkBackground = Array.from(document.getElementsByClassName("control__background-color"));
+let  arrBookLinkColor = Array.from(document.querySelectorAll(div.book__control_color));
 for (let link of arrLinksOfSize)
 {
   //let arrRotator = Array.from(linkClick.querySelectorAll("span.rotator__case"));
@@ -47,11 +48,11 @@ function toggleBookColor() {
 function toggleBookBackground() {
       let  arrBookBackground = document.querySelector(div.book__control__background);
     //let divBook div = document.getElementsById("book");
-    //if (isActive() == 0) {
-      document.querySelector(div.book__content).style.background = arrBookBackground[isActive()].dataset.background);}
-    //else if(isActive() == 2) {
-     // divBook.classList.add("book_fs-small");
-     //} //иначе ничего не меняем
+    if (isActive() == 0) {
+      document.querySelector(div.book).style.background = arrBookBackground[isActive()].dataset.background);}
+    else if(isActive() == 2) {
+     divBook.classList.add("book_fs-small");
+     } //иначе ничего не меняем
     //event.preventDefault();
     //return false;
     //link.style.color = arrRotator[i].dataset.color;
