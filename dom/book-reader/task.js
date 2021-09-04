@@ -9,9 +9,10 @@ for (let link of arrLinksOfSize)
   }
 
   function toggleSize() {
+    console.log(isActive());
     arrLinksOfSize[isActive()].classList.remove("font-size_active");
-    link.classList.add("font-size_active");
-    console.log(link);
+    this.classList.add("font-size_active");
+    console.log(this);
     //event.preventDefault();
     return false;
     //link.style.color = arrRotator[i].dataset.color;
