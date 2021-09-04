@@ -19,12 +19,15 @@ for (let link of arrLinksOfSize)
   }
 
   function toggleBookSize() {
-    let divBook = document.getElementsById("book");
-    //divBook.classList.add("book_fs-big");
-    //divBook.classList.add("book_fs-small");
-
+      let  divBook= document.querySelector(div.book__content);
+    //let divBook div = document.getElementsById("book");
+    if (isActive() == 0) {
+      divBook.classList.add("book_fs-big");}
+    else if(isActive() == 2) {
+      divBook.classList.add("book_fs-small");
+     }  //иначе ничего не меняем
     //event.preventDefault();
-    return false;
+    //return false;
     //link.style.color = arrRotator[i].dataset.color;
   }
   function onClick() {
