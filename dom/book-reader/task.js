@@ -63,5 +63,6 @@ function toggleBookBackground() {
     //toggleBookSize();
   }
 
+
   link.addEventListener('click', onClick);
 }
