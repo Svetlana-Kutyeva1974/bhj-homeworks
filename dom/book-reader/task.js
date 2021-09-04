@@ -32,7 +32,7 @@ for (let link of arrLinksOfSize)
   }
 
 function toggleBookColor() {
-      let  divBook= document.querySelector(div.book__content);
+      let  arrBookLinkColor = document.querySelectorAll(div.book__control_color);
     //let divBook div = document.getElementsById("book");
     if (isActive() == 0) {
       divBook.classList.add("book_fs-big");}
@@ -45,10 +45,10 @@ function toggleBookColor() {
   }
 
 function toggleBookBackground() {
-      let  divBook= document.querySelector(div.book__content);
+      let  arrBookBackground = document.querySelector(div.book__control__background);
     //let divBook div = document.getElementsById("book");
     if (isActive() == 0) {
-      divBook.classList.add("book_fs-big");}
+      document.querySelector(div.book__content).style.background = arrBookBackground[isActive()].dataset.background);}
     else if(isActive() == 2) {
       divBook.classList.add("book_fs-small");
      }  //иначе ничего не меняем
