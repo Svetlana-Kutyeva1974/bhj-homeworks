@@ -34,11 +34,11 @@ for (let link of arrLinksOfSize)
 function toggleBookColor() {
       let  arrBookLinkColor = document.querySelectorAll(div.book__control_color);
     //let divBook div = document.getElementsById("book");
-    if (isActive() == 0) {
-      divBook.classList.add("book_fs-big");}
-    else if(isActive() == 2) {
-      divBook.classList.add("book_fs-small");
-     }  //иначе ничего не меняем
+    //if (isActive() == 0) {
+      document.querySelector(div.book__content).style.color = arrBookColor[isActive()].dataset.color);}
+    //else if(isActive() == 2) {
+     // divBook.classList.add("book_fs-small");
+     //}//иначе ничего не меняем
     //event.preventDefault();
     //return false;
     //link.style.color = arrRotator[i].dataset.color;
@@ -47,11 +47,11 @@ function toggleBookColor() {
 function toggleBookBackground() {
       let  arrBookBackground = document.querySelector(div.book__control__background);
     //let divBook div = document.getElementsById("book");
-    if (isActive() == 0) {
+    //if (isActive() == 0) {
       document.querySelector(div.book__content).style.background = arrBookBackground[isActive()].dataset.background);}
-    else if(isActive() == 2) {
-      divBook.classList.add("book_fs-small");
-     }  //иначе ничего не меняем
+    //else if(isActive() == 2) {
+     // divBook.classList.add("book_fs-small");
+     //} //иначе ничего не меняем
     //event.preventDefault();
     //return false;
     //link.style.color = arrRotator[i].dataset.color;
