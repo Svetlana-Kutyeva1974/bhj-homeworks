@@ -28,7 +28,7 @@ for (let linkClick of arrLinks)
   }
 
   function onClick(time) {
-    id = setInterval (() => toggleRotator(), 1000);
+    id = setInterval (() => toggleRotator(), time);
   }
 
   function onClickClear() {
