@@ -18,12 +18,13 @@ addEventListener('change', e => {
   } else {
   	/*checkParent..children[0].checked = check.checked;
     checkParent.children[1].checked = check.checked;*/
-    if (checkParent.firstElementChild.firstElementChild.children[0] == check) {
+    let arr = check.closest("label").nextElementSibling.querySelectorAll("input");
+    /*if (checkParent.firstElementChild.firstElementChild.children[0] == check) {
     let arr = checkParent.firstElementChild.children[1].querySelectorAll("input");
    }
     else {
       let arr = checkParent.lastElementChild.children[1].querySelectorAll("input");
-    }
+    }*/
     arr.forEach(child => child.checked = check.checked);
 
     //children.forEach(child => child.checked = check.checked);
