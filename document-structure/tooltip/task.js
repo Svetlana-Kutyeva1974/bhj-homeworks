@@ -1,8 +1,10 @@
 const allLinksOffTools = Array.from(document.querySelectorAll("a.has-tooltip"));
-let tool = document.querySelector("div.tooltip");
+//let tool = document.querySelector("div.tooltip");//для проверки 1 вариант с готовым элементом
+let tool = document.createElement('div');
+tool.classList.add("tooltip");
+document.body.insertBefore(tool,document.body.children[2]);
 
 function toolPosition () {
- console.log("на каком а =" + this);
  let coords = this.getBoundingClientRect();
  tool.style.left = coords.left + "px";
  tool.style.top = coords.bottom + "px";
