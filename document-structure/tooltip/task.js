@@ -1,73 +1,69 @@
 const allLinksOffTools = Array.from(document.querySelectorAll("a.has-tooltip"));
 let tool = document.querySelector("div.tooltip");
 
-
-// получаем координаты элемента в контексте документа
-/*function getCoords(elem) {
-  let box = elem.getBoundingClientRect();
-
-  return {
-    top: box.top + pageYOffset,
-    left: box.left + pageXOffset
-  };
-}*/
-
-
-function toolPosition(){
-   console.log("на каком а =" + this);
-   let coords = this.getBoundingClientRect();
+function toolPosition () {
+ console.log("на каком а =" + this);
+ let coords = this.getBoundingClientRect();
+ tool.style.left = coords.left + "px";
+ tool.style.top = coords.bottom + "px";
 };
 
-
-/*function isActive () {
-    return (allLinksOffTools.findIndex((item) => (item.nextElementSibiling.classList.contains("tooltip_active"))));
-  }
-*/
-
 const onClickToggle = function() {
-  //tool.classList.remove("tooltip_active");
-  //let tool = document.querySelector("div.tooltip");
-  let coords = this.getBoundingClientRect();
-  //let coords = getCoords(this);
-  //console.log("активный=" + isActive ());
-  console.log(this);
-  console.log(coords.left + coords.bottom);
-  console.log("исход текст" + tool.innertext);
-  //tool.classList.toggle("tooltip_active");
-  tool.innerHTML = this.getAttribute("title");
-  console.log("атрибут значение:" + this.getAttribute("title"));
-  console.log("новый текст" + tool.innerHTML);
- // tool.style.cssText = "position: fixed;";
- // tool.dataset.position = "top";
-  tool.style.left = coords.left + "px";
-  tool.style.top = coords.bottom + "px";
-
-  
-if (!tool.classList.contains("tooltip_active")) { 
-  tool.classList.add("tooltip_active");}
-
-  event.preventDefault();
+   tool.innerHTML = this.getAttribute("title");
+   if (!tool.classList.contains("tooltip_active")) { 
+     tool.classList.add("tooltip_active");
+   }
+   event.preventDefault();
+   toolPosition.call(this);
 }
 
 for (let elem of allLinksOffTools) {
-elem.addEventListener('click', onClickToggle);
-console.log(this);
-
+  elem.addEventListener('click', onClickToggle);
 }
 
-//document.removeEventListener('click', onClickToggle);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//------------------------------------------------------------
+
+/*
 const onScrollToggle = function() {
   if (document.querySelector("div.tooltip").classList.contains("tooltip_active")) {
-    //onClickToggle();
     document.querySelector("div.tooltip").classList.remove("tooltip_active");
-    //document.querySelector("div.tooltip_active").scrollIntoView(false);//в конец окна
+   // toolPosition.call(this);
+   // document.querySelector("div.tooltip_active").scrollIntoView(false);//в конец окна
   }
   
 }
 window.addEventListener('scroll', onScrollToggle);
 
-
+*/
 
 
 
@@ -114,7 +110,7 @@ allLinksOffTools.forEach((item) => {
 
 
 
-
+*/
 
 /*if (tool.classList.contains("tooltip_active")) {
     //toolPosition();
@@ -123,5 +119,12 @@ allLinksOffTools.forEach((item) => {
   else {
     tool.classList.add("tooltip_active");
     //toolPosition();
-}*/
-*/
+  }*/
+
+
+
+/*function isActive () {
+    return (allLinksOffTools.findIndex((item) => (item.nextElementSibiling.classList.contains("tooltip_active"))));
+  }
+  */
+
