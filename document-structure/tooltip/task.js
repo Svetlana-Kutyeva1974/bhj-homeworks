@@ -13,7 +13,7 @@ function toolPosition () {
 const onClickToggle = function() {
    tool.innerHTML = this.getAttribute("title");
    if (!tool.classList.contains("tooltip_active")) { 
-     tool.classList.add("tooltip_active");
+     tool.classList.add("tooltip_active");//      заменить  блок if на tool.classList.toggle("tooltip_active");
    }
    event.preventDefault();
    toolPosition.call(this);
