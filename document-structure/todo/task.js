@@ -19,14 +19,14 @@ function clickNodeRemove () {
 
 function AddElement(){
   event.preventDefault();
-  addTaskHtml(item);
-  item = "";
+  addTaskHtml(item);//  вместо item:document.querySelector(".tasks__input").value
+  item = "";//убрать
   document.querySelector(".tasks__input").value = "";// очистка поля ввода
   document.querySelector("div.tasks__list").addEventListener('click', clickNodeRemove);
 }
 
 const onKey = (e) => {
-  (e.code === "Enter" || e.code === "NumpadEnter") ? AddElement() : item += `${e.key}` ;
+  (e.code === "Enter" || e.code === "NumpadEnter") ? AddElement() : item += `${e.key}` ;//убрать айтем
 }
 
 function onClick(event) {
