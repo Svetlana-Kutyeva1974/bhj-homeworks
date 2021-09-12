@@ -1,5 +1,3 @@
-//let decNumberProduct = document.querySelectorAll( '.product__quantity-control_dec' );
-//let incNumberProduct = document.querySelectorAll( '.product__quantity-control_inc' );
 let productControl = Array.from(document.querySelectorAll('product__controls'));
 let productChild = document.querySelectorAll('product__quantity');
 
@@ -7,7 +5,7 @@ let productChild = document.querySelectorAll('product__quantity');
 function onClickDec() {
     //(this.nextElementSibling.innerText === "0") ? this.nextElementSibling.innerText = `0` : this.nextElementSibling.innerText -= `1`;
     let num = Number(this.nextElementSibling.innerText) - 1;
-   (this.nextElementSibling.innerText === "0") ? this.nextElementSibling.innerText = `0` : this.nextElementSibling.innerText = `${num}`;
+   (this.nextElementSibling.innerText === "1") ? this.nextElementSibling.innerText = `1` : this.nextElementSibling.innerText = `${num}`;
  
   }
 
@@ -19,9 +17,7 @@ function onClickDec() {
 function onClickAdd() {
 	console.log(this);
 	let buscet = document.querySelector('div.cart__products');
-	
 	let buscetAll = Array.from(buscet.querySelectorAll('div.cart__product'));
-//return (arr.findIndex((item) => (item.classList.contains("slider__item_active"))));
 	let l = buscetAll.findIndex((item) => (item.dataset.id === this.closest('.product').dataset.id));
 
 	let product = document.createElement('div');
@@ -34,7 +30,7 @@ function onClickAdd() {
     {
     product.classList.add("cart__product");
     product.dataset.id = this.closest('.product').dataset.id;
-     buscet.insertAdjacentElement('afterBegin', product);
+    buscet.insertAdjacentElement('afterBegin', product);
 
 
     img.classList.add("cart__product-image");
