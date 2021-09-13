@@ -17,21 +17,23 @@ function toolPosition () {
 const onClickToggle = function(event) {
   tool.innerHTML = this.getAttribute("title");
    if (!tool.classList.contains("tooltip_active") ) {
-    event.preventDefault();
+    //event.preventDefault();
     toolPosition.call(this);
     tool.classList.add("tooltip_active");
    }
  else {
   if(tool.getBoundingClientRect().left !== this.getBoundingClientRect().left && tool.getBoundingClientRect().top !== this.getBoundingClientRect().bottom){
+  
     tool.classList.remove("tooltip_active");
     toolPosition.call(this);
-    event.preventDefault();
+   // event.preventDefault();
     tool.classList.add("tooltip_active");
    }
    else{
    tool.classList.remove("tooltip_active");
    }
  }
+  event.preventDefault();
 }
 
 for (let elem of allLinksOffTools) {
