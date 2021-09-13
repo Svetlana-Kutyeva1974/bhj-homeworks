@@ -4,10 +4,6 @@ let tool = document.createElement('div');
 tool.classList.add("tooltip");
 document.body.insertBefore(tool,document.body.children[2]);
 
-function isActive () {
-    return (allLinksOffTools.findIndex((item) => (item.classList.contains("tooltip_active"))));
-  }
-
 function toolPosition () {
  let coords = this.getBoundingClientRect();
  tool.style.left = coords.left + "px";
