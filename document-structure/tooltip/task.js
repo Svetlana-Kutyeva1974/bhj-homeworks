@@ -14,26 +14,26 @@ function toolPosition () {
  tool.style.top = coords.bottom + "px";
 };
 
+function toolActive () {
+    tool.innerHTML = this.getAttribute("title");
+    toolPosition.call(this);
+    tool.classList.add("tooltip_active");
+};
+
 const onClickToggle = function(event) {
-  tool.innerHTML = this.getAttribute("title");
-   if (!tool.classList.contains("tooltip_active") ) {
-    //event.preventDefault();
-    toolPosition.call(this);
-    tool.classList.add("tooltip_active");
+  event.preventDefault();
+   if (!tool.classList.contains("tooltip_active")) {
+     toolActive.call(this);
    }
- else {
-  if(tool.getBoundingClientRect().left !== this.getBoundingClientRect().left && tool.getBoundingClientRect().top !== this.getBoundingClientRect().bottom){
-  
+  else {
+    if(tool.innerHTML !== this.getAttribute("title")) {
     tool.classList.remove("tooltip_active");
-    toolPosition.call(this);
-   // event.preventDefault();
-    tool.classList.add("tooltip_active");
+    toolActive.call(this);
    }
    else{
-   tool.classList.remove("tooltip_active");
+     tool.classList.remove("tooltip_active");
    }
  }
-  event.preventDefault();
 }
 
 for (let elem of allLinksOffTools) {
@@ -69,7 +69,7 @@ for (let elem of allLinksOffTools) {
 
 
 
-//------------------------------------------------------------
+//------------------------------------------------------------if(tool.innerHTML === this.getAttribute("title")) {
 
 /*
 
