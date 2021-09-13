@@ -4,22 +4,35 @@ let tool = document.createElement('div');
 tool.classList.add("tooltip");
 document.body.insertBefore(tool,document.body.children[2]);
 
+function isActive () {
+    return (allLinksOffTools.findIndex((item) => (item.classList.contains("tooltip_active"))));
+  }
+
 function toolPosition () {
  let coords = this.getBoundingClientRect();
  tool.style.left = coords.left + "px";
  tool.style.top = coords.bottom + "px";
 };
 
-
 const onClickToggle = function(event) {
   tool.innerHTML = this.getAttribute("title");
-  tool.classList.toggle("tooltip_active");
-  event.preventDefault();
-  toolPosition.call(this);
-
+   if (!tool.classList.contains("tooltip_active") ) {
+    event.preventDefault();
+    toolPosition.call(this);
+    tool.classList.add("tooltip_active");
+   }
+ else {
+  if(tool.getBoundingClientRect().left !== this.getBoundingClientRect().left && tool.getBoundingClientRect().top !== this.getBoundingClientRect().bottom){
+    tool.classList.remove("tooltip_active");
+    toolPosition.call(this);
+    event.preventDefault();
+    tool.classList.add("tooltip_active");
+   }
+   else{
+   tool.classList.remove("tooltip_active");
+   }
+ }
 }
-
-
 
 for (let elem of allLinksOffTools) {
   elem.addEventListener('click', onClickToggle);
@@ -57,6 +70,23 @@ for (let elem of allLinksOffTools) {
 //------------------------------------------------------------
 
 /*
+
+else {
+  tool.classList.remove("tooltip_active");
+  if(tool.getBoundingClientRect().left === this.getBoundingClientRect().left && tool.getBoundingClientRect().top === this.getBoundingClientRect().bottom){
+  
+  }
+  else{
+    event.preventDefault();
+    toolPosition.call(this);
+    tool.classList.add("tooltip_active");
+    
+    }
+ }
+
+
+
+
 const onScrollToggle = function() {
   if (document.querySelector("div.tooltip").classList.contains("tooltip_active")) {
     document.querySelector("div.tooltip").classList.remove("tooltip_active");
