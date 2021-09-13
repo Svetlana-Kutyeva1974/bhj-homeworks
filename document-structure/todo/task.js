@@ -1,38 +1,52 @@
 let tasks = document.querySelector("div.tasks__list");
-let item = "";
 
 function addTaskHtml (item) {
-  tasks.innerHTML += `
+  if (item !== "")
+   {tasks.innerHTML += `
     <div class="task">
       <div class="task__title">
        ${item}
       </div>
       <a href="#" class="task__remove">&times;</a>
     </div>
-`;
+`;}
 }
 
-function clickNodeRemove () {
+function validate(event) {
+  if (!document.querySelector(".tasks__input").checkValidity()) {
+    alert("Поле ввода содержит некорректное число символов (введите от 5 до 80 символов)");
+    return false;
+  }
+  else 
+    return true;
+}
+
+function clickNodeRemove (event) {
   event.preventDefault();
   this.querySelector("a.task__remove").parentNode.remove();
 }
 
-function AddElement(){
+function addElement(event){
+  const inputValue = document.querySelector(".tasks__input");
   event.preventDefault();
-  addTaskHtml(item);//  вместо item:document.querySelector(".tasks__input").value
-  item = "";//убрать
-  document.querySelector(".tasks__input").value = "";// очистка поля ввода
-  document.querySelector("div.tasks__list").addEventListener('click', clickNodeRemove);
+  if (validate(event) === true) {
+  inputValue.value = inputValue.value.trim();
+  addTaskHtml(inputValue.value);
+  inputValue.value = "";// очистка поля ввода
+  }
 }
 
 const onKey = (e) => {
-  (e.code === "Enter" || e.code === "NumpadEnter") ? AddElement() : item += `${e.key}` ;//убрать айтем
+ if (e.code === "NumpadEnter") {
+   addElement();
+ } 
 }
 
 function onClick(event) {
-    document.addEventListener('keydown', onKey);
+  document.addEventListener('keydown', onKey);
 }
 
 document.querySelector("input.tasks__input").addEventListener('input', onClick);
-document.querySelector("button.tasks__add").addEventListener('click', AddElement);
+document.querySelector("button.tasks__add").addEventListener('click', addElement);
+document.querySelector("div.tasks__list").addEventListener('click', clickNodeRemove);
 
