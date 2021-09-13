@@ -3,10 +3,8 @@ let productChild = document.querySelectorAll('product__quantity');
 
 
 function onClickDec() {
-    //(this.nextElementSibling.innerText === "0") ? this.nextElementSibling.innerText = `0` : this.nextElementSibling.innerText -= `1`;
     let num = Number(this.nextElementSibling.innerText) - 1;
    (this.nextElementSibling.innerText === "1") ? this.nextElementSibling.innerText = `1` : this.nextElementSibling.innerText = `${num}`;
- 
   }
 
  function onClickInc() {
@@ -23,7 +21,6 @@ function onClickAdd() {
 	let product = document.createElement('div');
 	let img = document.createElement('img');
 	let productCount = document.createElement('div');
-     
 
 	if (buscetAll.length === 0 || l === -1 )
 
@@ -31,7 +28,6 @@ function onClickAdd() {
     product.classList.add("cart__product");
     product.dataset.id = this.closest('.product').dataset.id;
     buscet.insertAdjacentElement('afterBegin', product);
-
 
     img.classList.add("cart__product-image");
     img.src = this.closest('div.product').children[1].getAttribute('src');
@@ -45,8 +41,7 @@ function onClickAdd() {
 
 else {
    let num2 = Number(buscetAll[l].children[1].innerText) + Number(this.previousElementSibling.children[1].innerText);
-	// buscetAll[l].children[1].innerText = this.previousElementSibling.children[1].innerText;
-  buscetAll[l].children[1].innerText = `${num2}`;
+   buscetAll[l].children[1].innerText = `${num2}`;
 }
 }
 
