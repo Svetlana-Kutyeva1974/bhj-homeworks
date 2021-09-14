@@ -12,7 +12,8 @@ xhr.addEventListener('readystatechange', function() {
 		//let data = JSON.parse(xhr.responseText);
 	}
 	 
-    xhr.onprogress = function(event) { // запускается периодически
+    xhr.onprogress = function(event) { // xhr.upload.onprogress = function(event) {
+
   // event.loaded - количество загруженных байт
   // event.lengthComputable = равно true, если сервер присылает заголовок Content-Length
   // event.total - количество байт всего (только если lengthComputable равно true)
