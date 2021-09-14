@@ -70,10 +70,12 @@ function viewTable(obj) {
 		        if(xhr2.readyState === xhr2.DONE && xhr2.status === 200) {
 					let obj2 = xhr2.response;
 				    console.log(obj2, obj2.stat.length-1);
+				    items.innerText = "";
 				    for (let i = 0; i <= obj2.stat.length-1; i++) {
 	                console.log(obj2.stat[i]["answer"], obj2.stat[i]["votes"]);
 	                //if (i=0){items.innerText = "";}
-	                items.innerText = `${obj2.stat[i]["answer"]}` + `${obj2.stat[i]["votes"]}` + "\n";
+	                items.innerText += `${obj2.stat[i]["answer"]} ` + ` ${obj2.stat[i]["votes"]}` + "\n";
+
 	                 }
                  }
             }
