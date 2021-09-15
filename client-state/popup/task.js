@@ -18,9 +18,6 @@ window.addEventListener("load", (event) => {
    // обычное выполнение и запись кук
      element.classList.add("modal_active");
      iClose.onclick = closeModal;
-     window.addEventListener("beforeunload", (event) => {
-		  event.preventDefault();
-	 });
   }
 });
 
